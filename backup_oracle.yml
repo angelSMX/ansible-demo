@@ -1,0 +1,10 @@
+---
+- name: Create directory in server
+  hosts: database
+  gather_facts: yes
+  tasks:
+    
+    - name: Create directory ansible
+      ansible.builtin.file:
+        path: /home/oracle/ansible
+        state: directory

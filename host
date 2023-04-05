@@ -1,0 +1,6 @@
+[Apache_group]
+"44.204.188.175 ansible_ssh_private_key_file=/Users/angel/Documents/content/ansible/aws/key_ansible.pem"
+
+
+[database]
+192.168.1.120  ansible_connection=ssh ansible_user=oracle ansible_password=M3xic0.2012
