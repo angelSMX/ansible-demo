@@ -1,5 +1,5 @@
 ---
-- name: Create directory in server
+- name: Create backup and copy 
   hosts: database
   gather_facts: yes
   tasks:
@@ -8,3 +8,5 @@
       ansible.builtin.file:
         path: /home/oracle/ansible
         state: directory
+    - name: Run backup shell
+      ansible.builtin.shell: /home/oracle/backup.sh >> somelog.txt
