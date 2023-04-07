@@ -1,0 +1,15 @@
+---
+- name: Sync Pull task - Executed on source host
+  hosts: target01
+  gather_facts: yes
+  tasks:
+    - name: Copy the file from mwiapp01 to mwiapp02 using Method Push
+      yum:
+        name: rsync
+        state: latest
+    - name: tarea2
+      synchronize:
+        src: /tmp/
+        dest: /home/admin
+      delegate_to: target02
+      

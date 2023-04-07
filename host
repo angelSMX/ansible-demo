@@ -1,2 +1,2 @@
 [database]
-192.168.1.120 
+192.168.1.120 ansible_ssh_pass=M3xic0.2012 ansible_ssh_user=oracle ansible_connection=ssh
