@@ -18,18 +18,18 @@
     
     - name: Remove file war
       ansible.builtin.file:
-        path: "{{ deploy_jboss }}"/"{{ deploy_war }}"
+        path: '"{{ deploy_jboss }}"/"{{ deploy_war }}"'
         state: absent
     
     - name: Remove file undeployed
       ansible.builtin.file:
-        path:  "{{ deploy_jboss }}"/"{{ deploy_war }}".undeployed
+        path:  '"{{ deploy_jboss }}"/"{{ deploy_war }}".undeployed'
         state: absent
 
 
     - name: Deploy a hello world application to the default deploy_path
       community.general.jboss:
-        src: "{{ dest_git }}"/spring-jboss-0.0.1-SNAPSHOT.war
+        src: '"{{ dest_git }}"/spring-jboss-0.0.1-SNAPSHOT.war'
         deploy_path: "{{ deploy_jboss }}"
         deployment: "{{ deploy_war }}"
         state: present
