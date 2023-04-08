@@ -11,7 +11,7 @@
         force: yes
         
     - name: Undeploy war 
-      community.general.jboss:
+      jboss:
         deploy_path: "{{ deploy_jboss }}"
         deployment: "{{ deploy_war }}"
         state: absent
@@ -28,7 +28,7 @@
 
 
     - name: Deploy a hello world application to the default deploy_path
-      community.general.jboss:
+      jboss:
         src: '"{{ dest_git }}"/spring-jboss-0.0.1-SNAPSHOT.war'
         deploy_path: "{{ deploy_jboss }}"
         deployment: "{{ deploy_war }}"
