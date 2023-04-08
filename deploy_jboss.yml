@@ -7,29 +7,29 @@
     - name: Git checkout
       ansible.builtin.git:
         repo: 'https://github.com/angelSMX/calculadora.git'
-        dest: /home/admin/file_war/
+        dest: "{{ dest_git }}"
         force: yes
         
     - name: Undeploy war 
       community.general.jboss:
-        deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
-        deployment: spring-jboss.war
+        deploy_path: "{{ deploy_jboss }}"
+        deployment: "{{ deploy_war }}"
         state: absent
     
     - name: Remove file war
       ansible.builtin.file:
-        path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war
+        path: "{{ deploy_jboss }}"/"{{ deploy_war }}"
         state: absent
     
     - name: Remove file undeployed
       ansible.builtin.file:
-        path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war.undeployed
+        path:  "{{ deploy_jboss }}"/"{{ deploy_war }}".undeployed
         state: absent
 
 
     - name: Deploy a hello world application to the default deploy_path
       community.general.jboss:
-        src: /home/admin/file_war/spring-jboss-0.0.1-SNAPSHOT.war
-        deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
-        deployment: spring-jboss.war
+        src: "{{ dest_git }}"/spring-jboss-0.0.1-SNAPSHOT.war
+        deploy_path: "{{ deploy_jboss }}"
+        deployment: "{{ deploy_war }}"
         state: present
