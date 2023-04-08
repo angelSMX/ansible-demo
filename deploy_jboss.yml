@@ -4,7 +4,12 @@
   gather_facts: yes
   tasks: 
 
-
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/angelSMX/calculadora.git'
+        dest: /home/admin/file_war/
+        force: yes
+        
     - name: Undeploy war 
       community.general.jboss:
         deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
