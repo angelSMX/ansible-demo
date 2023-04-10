@@ -1,7 +1,8 @@
 ---
+---
 - name: "Installation and configuration"
   hosts: "{{ default('localhost') }}"
   collections:
-    - redhat.eap
+    - middleware_automation.wildfly
   roles:
-    - redhat.eap.eap_install
+    - wildfly_install
