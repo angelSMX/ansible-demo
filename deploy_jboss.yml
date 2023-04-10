@@ -1,11 +1,12 @@
 ---
 - name: Deploy file war on jboss 7
   hosts: webserver
-  vars:
-    eap_version: '24.0.1.Final'
-    eap_download_baseurl: "https://download.jboss.org/eap"
   collections:
-    - redhat.eap
+    - name: https://github.com/ansible-middleware/wildfly.git
+      type: git
+      version: master
+  roles:    
+    - role: redhat.eap
   gather_facts: no
   tasks: 
    
