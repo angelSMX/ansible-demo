@@ -10,8 +10,7 @@
         dest: /home/admin/file_war/
         force: yes
 
-
-    - name: Undeploy war 
+    - name: quita war 
       jboss:
         deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
         deployment: spring-jboss.war
@@ -34,4 +33,3 @@
         deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
         deployment: spring-jboss.war
         state: present
-
