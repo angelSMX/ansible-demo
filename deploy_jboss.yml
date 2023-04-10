@@ -6,7 +6,7 @@
       type: git
       version: main
   roles:    
-    - role: redhat.eap
+    - role: eap_install
   gather_facts: no
   tasks: 
    
