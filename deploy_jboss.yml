@@ -2,7 +2,7 @@
 - name: Deploy file war on jboss 7
   hosts: webserver
   collections:
-    - name: https://github.com/ansible-middleware/wildfly.git
+    - name: git+ssh://git@github.com:ansible-middleware/wildfly.git
       type: git
       version: master
   roles:    
