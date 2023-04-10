@@ -4,4 +4,4 @@
   collections:
     - redhat.eap
   roles:
-    - eap_install
+    - redhat.eap.eap_install
