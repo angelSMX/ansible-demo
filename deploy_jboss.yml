@@ -10,7 +10,7 @@
         dest: "{{ dest_git }}"
         force: yes
         
-    - name: Undeploy war 
+    - name: Undeploy_war 
       jboss:
         deploy_path: "{{ deploy_jboss }}"
         deployment: "{{ deploy_war }}"
