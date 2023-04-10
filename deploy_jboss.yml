@@ -6,8 +6,6 @@
     eap_download_baseurl: "https://download.jboss.org/eap"
   collections:
     - redhat.eap
-  roles:
-    - Admin
   gather_facts: no
   tasks: 
    
