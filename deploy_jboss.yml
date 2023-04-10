@@ -1,6 +1,9 @@
 ---
 - name: Deploy file war on jboss 7
   hosts: webserver
+  collections:
+    - redhat.eap
+    - redhat.jboss_eap
   gather_facts: no
   tasks: 
    
