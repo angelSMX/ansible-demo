@@ -9,13 +9,7 @@
         repo: 'https://github.com/angelSMX/calculadora.git'
         dest: "{{ dest_git }}"
         force: yes
-        
-    - name: Undeploy_war 
-      community.general.jboss:
-        deploy_path: "{{ deploy_jboss }}"
-        deployment: "{{ deploy_war }}"
-        state: absent
-    
+            
     - name: Remove file war
       ansible.builtin.file:
         path: '"{{ deploy_jboss }}"/"{{ deploy_war }}"'
