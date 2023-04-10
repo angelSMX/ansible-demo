@@ -1,5 +1,4 @@
 ---
----
 - name: "Installation and configuration"
   hosts: "{{ default('localhost') }}"
   collections:
