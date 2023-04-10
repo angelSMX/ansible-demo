@@ -4,7 +4,7 @@
   collections:
     - name: git+ssh://git@github.com:ansible-middleware/wildfly.git
       type: git
-      version: master
+      version: main
   roles:    
     - role: redhat.eap
   gather_facts: no
