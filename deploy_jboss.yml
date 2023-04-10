@@ -6,32 +6,32 @@
    
     - name: Git checkout
       ansible.builtin.git:
-       repo: 'https://github.com/angelSMX/calculadora.git'
-       dest: /home/admin/file_war/
-       force: yes
+        repo: 'https://github.com/angelSMX/calculadora.git'
+        dest: /home/admin/file_war/
+        force: yes
 
 
     - name: Undeploy war 
       jboss:
-       deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
-       deployment: spring-jboss.war
-       state: absent
+        deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
+        deployment: spring-jboss.war
+        state: absent
     
     - name: Remove file war
       ansible.builtin.file:
-       path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war
-       state: absent
+        path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war
+        state: absent
     
     - name: Remove file undeployed
       ansible.builtin.file:
-       path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war.undeployed
-       state: absent
+        path: /home/admin/jboss-eap-7.4/standalone/deployments/spring-jboss.war.undeployed
+        state: absent
 
 
     - name: Deploy a hello world application to the default deploy_path
       jboss:
-       src: /home/admin/file_war/spring-jboss-0.0.1-SNAPSHOT.war
-       deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
-       deployment: spring-jboss.war
-       state: present
+        src: /home/admin/file_war/spring-jboss-0.0.1-SNAPSHOT.war
+        deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
+        deployment: spring-jboss.war
+        state: present
 
