@@ -11,7 +11,7 @@
         force: yes
 
     - name: quita war 
-      jboss:
+      community.general.jboss:
         deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
         deployment: spring-jboss.war
         state: absent
@@ -28,7 +28,7 @@
 
 
     - name: Deploy a hello world application to the default deploy_path
-      jboss:
+      community.general.jboss:
         src: /home/admin/file_war/spring-jboss-0.0.1-SNAPSHOT.war
         deploy_path: /home/admin/jboss-eap-7.4/standalone/deployments
         deployment: spring-jboss.war
