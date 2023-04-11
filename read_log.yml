@@ -1,0 +1,25 @@
+---
+- name: Deploy file war on jboss 7
+  hosts: webserver
+  gather_facts: false
+  vars:
+    my_secret: secure_password
+  tasks: 
+    
+    - name: extract password from file 
+      register: presence
+      shell: "grep  'ERROR' /home/admin/server.log.2023-04-06 >> /home/admin/file_ERROR.txt"
+
+    - name: Sending an e-mail using Gmail SMTP servers
+      community.general.mail:
+        host:  smtp-mail.outlook.com
+        port: 587
+        secure: starttls
+        sender: angel_mxtest@outlook.com
+        username: angel_mxtest@outlook.com
+        password: my_secret
+        to: anguzman@redhat.com
+        subject: Ansible-report
+        body: System  has been successfully provisioned, this a logfile.
+        attach:
+          - /home/admin/file_ERROR.txt
