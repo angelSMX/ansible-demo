@@ -15,7 +15,7 @@
         secure: starttls
         sender: angel_mxtest@outlook.com
         username: angel_mxtest@outlook.com
-        password: secure_password
+        password: "{{ secure_password }}"
         to: anguzman@redhat.com
         subject: Ansible-report
         body: System  has been successfully provisioned, this a logfile.
