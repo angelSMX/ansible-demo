@@ -2,8 +2,6 @@
 - name: Deploy file war on jboss 7
   hosts: webserver
   gather_facts: false
-  vars:
-    my_secret: secure_password
   tasks: 
     
     - name: extract password from file 
