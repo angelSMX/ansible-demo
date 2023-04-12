@@ -8,7 +8,7 @@
       register: presence
       shell: "grep  'ERROR' /home/admin/server.log.2023-04-06 >> /home/admin/file_ERROR.txt"
 
-    - name: Sending an e-mail using Gmail SMTP servers
+    - name: Sending an e-mail using outlook SMTP servers
       community.general.mail:
         host:  smtp-mail.outlook.com
         port: 587
@@ -21,3 +21,8 @@
         body: System  has been successfully provisioned, this a logfile.
         attach:
           - /home/admin/file_ERROR.txt
+   
+    - name: Remove file send
+      ansible.builtin.file:
+        path: /home/admin/file_ERROR.txt
+        state: absent
