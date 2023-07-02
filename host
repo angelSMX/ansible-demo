@@ -1,0 +1,9 @@
+[database]
+192.168.1.120 ansible_ssh_pass=M3xic0.2012 ansible_ssh_user=oracle ansible_connection=ssh
+
+
+[webserver]
+192.168.1.122 ansible_ssh_pass=root01 ansible_ssh_user=admin ansible_connection=ssh
+
+[ldap-server]
+192.168.1.75 ansible_ssh_pass=root01 ansible_ssh_user=admin ansible_connection=ssh
