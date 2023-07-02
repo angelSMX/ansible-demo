@@ -1,0 +1,16 @@
+dn: cn={{ nombre }}{{ apellido }},ou=people,dc=pruebas,dc=argl,dc=io
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+objectClass: person
+cn: {{ nombre }}{{ apellido }}
+uid: { {nombre }}{{ apellido }}
+uidNumber: 2000
+gidNumber: 2000
+homeDirectory: /home/users/{{ nombre }}{{ apellido }}
+loginShell: /bin/bash
+userPassword: {SSHA}6dVMmOtZ7P0mSR/FN9peprES6P1rV5
+sn: {{ apellido }}
+mail: {{ nombre }}{{ apellido }}@prueba.com
+givenName: {{ nombre }}{{ apellido }}
+
