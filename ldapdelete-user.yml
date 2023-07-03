@@ -1,0 +1,11 @@
+---
+    - name: Management a Directory Server
+      hosts: ldap-server
+      gather_facts: false
+      vars:
+        userlogin: cn=angelguzman,ou=people,dc=pruebas,dc=argl,dc=io
+        passlogin: M3xic0
+      tasks:  
+        - name: delete user on ldap
+          ansible.builtin.command:  ldapdelete -x -D {{ userlogin  }} -w {{ passlogin }} cn={{ nombre }}{{ apellido }},ou=people,dc=pruebas,dc=argl,dc=io
+   
