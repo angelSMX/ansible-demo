@@ -3,10 +3,8 @@
   hosts: ldap-server
   gather_facts: false
   vars:
-    nombre: carlo
-    apellido: lopez
     userlogin: cn=angelguzman,ou=people,dc=pruebas,dc=argl,dc=io
-    passlogin: M3xic0
+    passlogin: secure-pass
   tasks:  
     - name: copy user to ldap
       template:
