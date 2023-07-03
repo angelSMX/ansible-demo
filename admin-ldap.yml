@@ -4,7 +4,6 @@
   gather_facts: false
   vars:
     userlogin: cn=angelguzman,ou=people,dc=pruebas,dc=argl,dc=io
-    passlogin: secure-pass
   tasks:  
     - name: copy user to ldap
       template:
