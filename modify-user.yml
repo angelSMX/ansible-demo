@@ -1,0 +1,20 @@
+
+---
+- name: Management a Directory Server
+  hosts: ldap-server
+  gather_facts: false
+  vars:
+    userlogin: cn=angelguzman,ou=people,dc=pruebas,dc=argl,dc=io
+    passlogin: M3xic0
+  tasks:  
+    - name: copy user to ldap
+      template:
+        src: modify-user.j2
+        dest: /tmp/modify-user.ldif
+    - name: modify user on ldap
+      ansible.builtin.command: ldapmodify -x  -D {{ userlogin }} -w {{ passlogin }} -f /tmp/modify-user.ldif
+    - name: delete template
+      ansible.builtin.command: rm -rf /tmp/modify-user.ldif
+
+
+

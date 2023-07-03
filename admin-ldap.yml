@@ -13,4 +13,4 @@
     - name: add user to ldap
       ansible.builtin.command: ldapadd -x  -D  {{ userlogin  }} -w {{ passlogin }}  -f /tmp/add-user.ldif
     - name: delete template
-      ansible.builtin.command: rm -rf add-user.ldif  
+      ansible.builtin.command: rm -rf /tmp/add-user.ldif  

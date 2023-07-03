@@ -1,0 +1,7 @@
+dn:  cn={{ nombre }}{{ apellido }},ou=people,dc=pruebas,dc=argl,dc=io
+changetype: modify
+delete: {{ atributo }}
+{{ atributo }}: {{ valor_actual }}
+-
+add: {{ atributo }}
+{{ atributo }}: {{ valor_nuevo }}
