@@ -14,4 +14,4 @@
       tasks:  
         - name: delete user on ldap
           ansible.builtin.command:  ldapdelete -x -D {{ userlogin  }} -w {{ passlogin }} cn={{ nombre }}{{ apellido }},ou=people,dc=pruebas,dc=argl,dc=io
-   
+          nolog: true
