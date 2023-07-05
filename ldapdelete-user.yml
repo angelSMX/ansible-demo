@@ -4,7 +4,13 @@
       gather_facts: false
       vars:
         userlogin: cn=angelguzman,ou=people,dc=pruebas,dc=argl,dc=io
-        passlogin: M3xic0
+        passlogin: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          66643830333838303231653764356233666133616161376130306363626430383436363261656364
+          6235353463633037616338333439306637343737616165310a366530303034343862363230623664
+          64616335636365333035333031353664313666336635373933653961656632386365623534303038
+          3030633038356134620a323235646636396365653465306332336461613866626138383932383065
+          3364
       tasks:  
         - name: delete user on ldap
           ansible.builtin.command:  ldapdelete -x -D {{ userlogin  }} -w {{ passlogin }} cn={{ nombre }}{{ apellido }},ou=people,dc=pruebas,dc=argl,dc=io
