@@ -12,6 +12,8 @@
           3536
   tasks:
     - name: connect to sqlplus
+      become: yes
+      become_user: oracle
       shell:
         expdp \"system/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y
 
