@@ -1,0 +1,19 @@
+---
+- name: This playbook does a backup oracle database
+  hosts: database
+  gather_facts: yes
+  vars:
+    system: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30396337383139303232666335396537336465643034393736313566633738333464323139396532
+          3231353838666339356531313739636432356431626235360a653430313062316632326561356630
+          39393636376562636132393933376637346263323332306131333737616336313362363766346138
+          3637336538396565310a663334333763376339383830663832373739356463396366623165656234
+          3536%
+  tasks:
+    
+    - name: connect to sqlplus
+      shell:
+        expdp \"system/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y
+
+        
