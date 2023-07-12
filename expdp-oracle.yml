@@ -66,7 +66,7 @@
       shell:
         expdp \"sys/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y parallel=6
 
-     - name: mount data base
+    - name: mount data base
       environment:
         ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
       shell:
