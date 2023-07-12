@@ -11,13 +11,14 @@
           3637336538396565310a663334333763376339383830663832373739356463396366623165656234
           3536
   environment:
-    ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1
-    PATH: '$PATH:{{ ORACLE_HOME }}/bin'
+    PATH: $PATH:/u01/app/oracle/product/19.3.0/dbhome_1/bin
    
   
   tasks:
   
     - name: run export
+      environment:
+        ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
       shell:
         expdp \"system/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y
 
