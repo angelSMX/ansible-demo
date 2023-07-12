@@ -15,7 +15,7 @@
     - name: connect to sqlplus
       shell:
       environment:
-        ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1
+        ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1/bin
 
     - name: run export
       shell:
