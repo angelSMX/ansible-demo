@@ -12,7 +12,7 @@
           3536
   environment:
     ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1
-    PATH: '$PATH:{{ ORACLE_HOME }}'
+    PATH: '$PATH:{{ ORACLE_HOME }}/bin'
    
   
   tasks:
