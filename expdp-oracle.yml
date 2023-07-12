@@ -12,11 +12,15 @@
           3536
   tasks:
 
-    - name: connect to sqlplus
+    - name: export variable
       shell:
       environment:
         ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1/bin
 
+    - name: echo
+      shell:
+        echo "$ORACLE_HOME"
+      
     - name: run export
       shell:
         expdp \"system/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y
