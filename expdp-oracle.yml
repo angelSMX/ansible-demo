@@ -11,7 +11,9 @@
           3637336538396565310a663334333763376339383830663832373739356463396366623165656234
           3536
   environment:
-    PATH: $PATH:/u01/app/oracle/product/19.3.0/dbhome_1/bin
+    ORACLE_HOME: /u01/app/oracle/product/19.3.0/dbhome_1/bin
+    PATH: $PATH:{{ ORACLE_HOME }}
+   
   
   tasks:
   
