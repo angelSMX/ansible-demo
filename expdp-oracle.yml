@@ -41,12 +41,52 @@
       shell:
         cmd: |
           sqlplus /nolog << EOF
-          conn sys/{{ system }}@ORCL as sysdba
+          conn sys/{{ system }}@{{ database }} as sysdba
           shutdown immediate;
           EOF
       args:
         executable: /bin/bash
 
+    - name: mount data base
+      environment:
+        ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
+      shell:
+        cmd: |
+          sqlplus /nolog << EOF
+          conn sys/{{ system }}@{{ database }} as sysdba
+          startup mount;
+          EOF
+      args:
+        executable: /bin/bash
+
           
-  
-   
+    - name: run export
+      environment:
+        ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
+      shell:
+        expdp \"sys/{{ system }}@{{ database }} as sysdba\" directory=BACKUP_DIR dumpfile=exp_PDWND12_$DATE.dmp logfile=exppdwnd12_$DATE.log EXCLUDE=STATISTICS full=y parallel=6
+
+     - name: mount data base
+      environment:
+        ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
+      shell:
+        cmd: |
+          sqlplus /nolog << EOF
+          conn sys/{{ system }}@{{ database }} as sysdba
+          ALTER DATABASE OPEN;
+          EOF
+      args:
+        executable: /bin/bash
+
+    - name: Sending an e-mail using outlook SMTP servers
+      community.general.mail:
+        host:  smtp-mail.outlook.com
+        port: 587
+        secure: starttls
+        sender: angel_mxtest@outlook.com
+        username: angel_mxtest@outlook.com
+        password: "{{ passmail }}"
+        to: "{{ destinatario }}"
+        subject: Inicio de backup
+        body: Finalizan las  actividades  del respaldo de la base de datos {{ database }}
+        
