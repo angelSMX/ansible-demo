@@ -23,7 +23,7 @@
   
   tasks:
 
-   - name: Sending an e-mail using outlook SMTP servers
+    - name: Sending an e-mail using outlook SMTP servers
       community.general.mail:
         host:  smtp-mail.outlook.com
         port: 587
