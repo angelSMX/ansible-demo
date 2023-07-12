@@ -54,7 +54,7 @@
         cmd: |
           sqlplus /nolog << EOF
           conn sys/{{ system }}@{{ database }} as sysdba
-          startup mount;
+          startup restrict;
           EOF
       args:
         executable: /bin/bash
