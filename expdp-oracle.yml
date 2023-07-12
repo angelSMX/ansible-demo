@@ -10,11 +10,41 @@
           39393636376562636132393933376637346263323332306131333737616336313362363766346138
           3637336538396565310a663334333763376339383830663832373739356463396366623165656234
           3536
+    passmail: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          66613336323337363664376664383532376134303061383734313335663033393935373265613035
+          6664353534303435663331303339613566646366626461340a633732303731363334346362313263
+          61643063366231616666313035336434616134633835333931353931343265353966623033393766
+          3834333832346365340a636661353035313866326538636265626132336432383465623431653661
+          37303530386462333133653031613839383130643034343335333431623134313232
   environment:
     PATH: $PATH:/u01/app/oracle/product/19.3.0/dbhome_1/bin
    
   
   tasks:
+
+   - name: Sending an e-mail using outlook SMTP servers
+      community.general.mail:
+        host:  smtp-mail.outlook.com
+        port: 587
+        secure: starttls
+        sender: angel_mxtest@outlook.com
+        username: angel_mxtest@outlook.com
+        password: "{{ passmail }}"
+        to: "{{ destinatario }}"
+        subject: Inicio de backup
+        body: Se inician las actividades para el respaldo de la base de datos {{ database }}
+    
+    - name: down data base
+      environment:
+        ORACLE_HOME: '/u01/app/oracle/product/19.3.0/dbhome_1'
+      shell:
+         sqlplus \"sys/{{ system }}@{{ database }} as sysdba\" / <<EOF
+         shutdown immediate;
+         startup mount;
+         quit;
+         EOF
+          
   
     - name: run export
       environment:
